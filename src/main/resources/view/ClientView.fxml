@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<AnchorPane prefHeight="418.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ClientView">
+   <children>
+      <ImageView fitHeight="479.0" fitWidth="770.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/fondi.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="48.0" stroke="TRANSPARENT" strokeType="INSIDE" width="747.0" />
+      <Label layoutX="310.0" layoutY="14.0" prefHeight="21.0" prefWidth="126.0" text="Manage your account." textFill="WHITE" />
+      <TabPane layoutX="20.0" layoutY="73.0" prefHeight="391.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Add balance">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="115.0" layoutX="72.0" layoutY="77.0" stroke="TRANSPARENT" strokeType="INSIDE" width="581.0" />
+                        <Label layoutX="85.0" layoutY="104.0" text="Enter the total amount of money to add" textFill="#fffefe" />
+                        <TextField layoutX="334.0" layoutY="100.0" prefHeight="26.0" prefWidth="279.0" />
+                        <Button layoutX="296.0" layoutY="154.0" mnemonicParsing="false" text="add" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Withdraw from account">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="115.0" layoutX="84.0" layoutY="83.0" stroke="TRANSPARENT" strokeType="INSIDE" width="581.0" />
+                        <Label layoutX="84.0" layoutY="120.0" text="Enter the total amount of money to add" textFill="#fffefe" />
+                        <TextField layoutX="343.0" layoutY="115.0" prefHeight="26.0" prefWidth="279.0" />
+                        <Button layoutX="288.0" layoutY="154.0" mnemonicParsing="false" text="Withdraw money" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="669.0" layoutY="12.0" mnemonicParsing="false" text="Log out" />
+   </children>
+</AnchorPane>
