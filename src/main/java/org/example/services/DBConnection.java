@@ -1,6 +1,8 @@
 package org.example.services;
 
+import org.example.model.Banco;
 import org.example.model.Cliente;
+import org.example.model.Empleado;
 
 import java.sql.*;
 
@@ -71,6 +73,96 @@ public class DBConnection {
             System.out.println("Error al agregar el cliente a la base de datos: " + e.getMessage());
         }
 
+    }
+
+
+    public void insertarEmpleado(Empleado empleado) {
+
+        try {
+            String sql = "INSERT INTO empleados (identificador, nombre, apellido, cedula, direccion, telefono," +
+                    " correo, contrasena, fechaNacimiento, clientesAsociados) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            // Preparación de la consulta SQL con los valores del cliente
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setLong(1, empleado.getIdentificador());
+            pstmt.setString(2, empleado.getNombre());
+            pstmt.setString(3, empleado.getApellido());
+            pstmt.setString(4, empleado.getCedula());
+            pstmt.setString(5, empleado.getDireccion());
+            pstmt.setString(6, empleado.getTelefono());
+            pstmt.setString(7, empleado.getCorreo());
+            pstmt.setString(8, empleado.getContrasenia());
+            pstmt.setString(9, empleado.getFechaNacimiento());
+            pstmt.setString(10, empleado.getListaClienteAsociados().toString());
+            // Ejecución de la consulta SQL
+            pstmt.executeUpdate();
+            // Cierre de la conexión y del statement
+            pstmt.close();
+            System.out.println(" Cliente agregado a la base de datos");
+        } catch (SQLException e) {
+            System.out.println("Error al agregar el cliente a la base de datos: " + e.getMessage());
+        }
+
+    }
+
+    //obtener todos los clientes de la base de datos
+
+    public void obtenerClientes()  {
+        try {
+            String sql = "SELECT * FROM clientes";
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+
+                Cliente cliente = new Cliente();
+                cliente.setIdentificador(rs.getLong("identificador"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setCedula(rs.getString("cedula"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setCorreo(rs.getString("correo"));
+                cliente.setContrasenia(rs.getString("contrasena"));
+                cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
+
+                Banco.getInstance().crearCliente(cliente);
+
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener los clientes de la base de datos: " + e.getMessage());
+        }
+    }
+
+
+    public void obtenerEmpleados() {
+        try {
+            String sql = "SELECT * FROM empleados";
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Empleado empleado = new Empleado();
+                empleado.setIdentificador(rs.getLong("identificador"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setCedula(rs.getString("cedula"));
+                empleado.setDireccion(rs.getString("direccion"));
+                empleado.setTelefono(rs.getString("telefono"));
+                empleado.setCorreo(rs.getString("correo"));
+                empleado.setContrasenia(rs.getString("contrasena"));
+                empleado.setFechaNacimiento(rs.getString("fechaNacimiento"));
+                Banco.getInstance().crearEmpleado(empleado);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener los empleados de la base de datos: " + e.getMessage());
+        }
+    }
+
+
+    public void cargarTodosDatos(){
+        obtenerClientes();
+        obtenerEmpleados();
     }
 
 

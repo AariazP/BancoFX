@@ -36,8 +36,6 @@ public class Banco implements IBanco{
         return instance;
     }
 
-
-
     @Override
     public void crearEmpleado(Empleado empleado) {
         listaEmpleados.add(empleado);

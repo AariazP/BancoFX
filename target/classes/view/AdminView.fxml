@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="513.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AdminController">
+<AnchorPane prefHeight="513.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AdminController">
    <children>
       <ImageView fitHeight="544.0" fitWidth="842.0" layoutX="-1.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -41,13 +41,13 @@
                         </TableView>
                         <VBox layoutX="588.0" layoutY="121.0" prefHeight="198.0" prefWidth="211.0">
                            <children>
-                              <Button fx:id="btnCrearEmp" mnemonicParsing="false" onAction="#crearEmp" prefHeight="33.0" prefWidth="221.0" text="Create" />
-                              <Button fx:id="btnActEmp" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#actualizarEmp" prefHeight="33.0" prefWidth="221.0" text="Update">
+                              <Button mnemonicParsing="false" onAction="#crearEmp" prefHeight="33.0" prefWidth="221.0" text="Create" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#actualizarEmp" prefHeight="33.0" prefWidth="221.0" text="Update">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="btnElimEmp" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#eliminarEmp" prefHeight="33.0" prefWidth="221.0" text="Delete">
+                              <Button layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#eliminarEmp" prefHeight="33.0" prefWidth="221.0" text="Delete">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
@@ -69,13 +69,13 @@
                      <children>
                         <VBox layoutX="581.0" layoutY="111.0" prefHeight="198.0" prefWidth="211.0">
                            <children>
-                              <Button fx:id="btnCrearCli" mnemonicParsing="false" onAction="#crearCliente" prefHeight="33.0" prefWidth="221.0" text="Create" />
-                              <Button fx:id="btnActCli" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="33.0" prefWidth="221.0" text="Update">
+                              <Button mnemonicParsing="false" onAction="#crearCliente" prefHeight="33.0" prefWidth="221.0" text="Create" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="33.0" prefWidth="221.0" text="Update">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="btnElimCli" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="33.0" prefWidth="221.0" text="Delete">
+                              <Button layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="33.0" prefWidth="221.0" text="Delete">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>

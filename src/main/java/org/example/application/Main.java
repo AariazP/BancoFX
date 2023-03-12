@@ -12,8 +12,10 @@ import org.example.controllers.Controller;
 import org.example.model.Banco;
 import org.example.model.Cliente;
 import org.example.model.Persona;
+import org.example.services.DBConnection;
 import org.example.utils.Utils;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 @Getter
@@ -25,12 +27,18 @@ public class Main extends Application{
 
     Banco banco = Banco.getInstance();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
         launch();
+
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        Banco.getInstance().crearCliente(new Cliente("Juan", "Perez", "", "", "", "", "", "", "", 3.5, ""));
+        DBConnection.getInstance().cargarTodosDatos();
+        System.out.println(Banco.getInstance().getListaClientes().size());
+        System.out.println(Banco.getInstance().getListaEmpleados().size());
         this.stage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.Login));
         Pane root = loader.load();
