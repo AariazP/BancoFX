@@ -57,4 +57,12 @@ public class Cuenta implements ICuenta{
     public Double consultarSaldo() {
         return null;
     }
+
+    public void consignar(Double saldoConsignar) {
+        saldo += saldoConsignar;
+    }
+
+    public void retirar(Double saldoRetiro) {
+        saldo -= saldoRetiro;
+    }
 }

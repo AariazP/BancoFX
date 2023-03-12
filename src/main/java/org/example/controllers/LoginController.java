@@ -47,7 +47,6 @@ public class LoginController extends Controller{
                         Alert.AlertType.WARNING);
                 txtEmail.setText("");
                 txtPassword.setText("");
-                return;
             } else if (persona instanceof Cliente cliente) {
                 main.setPersonaActiva(cliente);
                 main.loadStage(Utils.Cliente);
@@ -55,7 +54,7 @@ public class LoginController extends Controller{
                 main.setPersonaActiva(persona);
                 main.loadStage(Utils.Admin);
             }
-            
+
         }
 
     }

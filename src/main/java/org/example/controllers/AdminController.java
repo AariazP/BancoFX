@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import org.example.model.Cliente;
 import org.example.model.Empleado;
 
-public class AdminController {
+public class AdminController extends Controller{
 
     @FXML
     private Button btnActCli;

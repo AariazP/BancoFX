@@ -14,6 +14,10 @@ public class Cliente extends Persona implements Comparable<Cliente>{
 
     private Cuenta cuenta;
 
+    private Long identificador;
+
+    private static Long idCliente = 0L;
+
     public Cliente() {}
 
 
@@ -22,7 +26,7 @@ public class Cliente extends Persona implements Comparable<Cliente>{
         super(name, lastName, id, address, telefono, email, fecha, password);
         crearCuenta(numCuenta, saldo, tipo);
 
-
+        identificador = ++idCliente;
 
     }
 
@@ -51,5 +55,9 @@ public class Cliente extends Persona implements Comparable<Cliente>{
 
     public boolean isCliente(String correo, String password) {
         return this.getCorreo().equals(correo) && this.getContrasenia().equals(password);
+    }
+
+    public boolean isAhorros() {
+        return cuenta instanceof CuentaAhorro;
     }
 }

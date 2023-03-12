@@ -12,7 +12,7 @@ public class Empleado extends Persona implements Comparable<Empleado>{
     private String salario;
     private LinkedList<Cliente> listaClienteAsociados;
     private Banco banco;
-
+    private Long identificador;
     public Empleado() {}
 
     public Empleado(String codigo, String salario) {

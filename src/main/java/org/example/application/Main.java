@@ -7,8 +7,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.controllers.ClienteController;
 import org.example.controllers.Controller;
 import org.example.model.Banco;
+import org.example.model.Cliente;
 import org.example.model.Persona;
 import org.example.utils.Utils;
 
@@ -44,10 +46,17 @@ public class Main extends Application{
         Pane root = loader.load();
         Controller controller = loader.getController();
         controller.setMain(this);
+        cargarSaldo(controller);
         Scene scene = new Scene(root);
         stage.hide();
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void cargarSaldo(Controller controller) {
+        if (controller instanceof ClienteController clienteController) {
+            clienteController.cargarSaldo();
+        }
     }
 
     public void mostrarMensaje(String titulo, String header, String mensaje, Alert.AlertType alerta) {

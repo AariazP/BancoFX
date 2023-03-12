@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="418.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ClienteController">
+<AnchorPane prefHeight="418.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ClienteController">
    <children>
       <ImageView fitHeight="479.0" fitWidth="770.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,7 +29,7 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="115.0" layoutX="65.0" layoutY="98.0" stroke="TRANSPARENT" strokeType="INSIDE" width="581.0" />
                         <Label layoutX="91.0" layoutY="138.0" text="Enter the total amount of money to add" textFill="#fffefe" />
                         <TextField fx:id="txtSaldoConsignar" layoutX="337.0" layoutY="134.0" prefHeight="26.0" prefWidth="279.0" />
-                        <Button layoutX="337.0" layoutY="181.0" mnemonicParsing="false" text="Add" />
+                        <Button layoutX="337.0" layoutY="181.0" mnemonicParsing="false" onAction="#depositarDinero" text="Add" />
                      </children>
                   </AnchorPane>
             </content>
@@ -41,19 +41,16 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="115.0" layoutX="64.0" layoutY="102.0" stroke="TRANSPARENT" strokeType="INSIDE" width="581.0" />
                         <Label layoutX="79.0" layoutY="137.0" text="Enter the total amount of money to withdraw" textFill="#fffefe" />
                         <TextField fx:id="txtSaldoRetiro" layoutX="343.0" layoutY="133.0" prefHeight="26.0" prefWidth="279.0" />
-                        <Button layoutX="290.0" layoutY="181.0" mnemonicParsing="false" text="Withdraw money" />
+                        <Button layoutX="290.0" layoutY="181.0" mnemonicParsing="false" onAction="#retirarDinero" text="Withdraw money" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Account state">
+            <Tab onSelectionChanged="#cargarSaldo" text="Account state">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="304.0" layoutX="23.0" layoutY="29.0" stroke="TRANSPARENT" strokeType="INSIDE" width="662.0" />
-                        <TextField fx:id="txtSaldoMod" layoutX="240.0" layoutY="218.0" prefHeight="25.0" prefWidth="228.0" />
-                        <Button fx:id="btnDeposito" layoutX="240.0" layoutY="288.0" mnemonicParsing="false" onAction="#depositarDinero" text="Deposit" />
-                        <Button fx:id="btnRetiro" layoutX="400.0" layoutY="288.0" mnemonicParsing="false" onAction="#retirarDinero" text="Withdraw" />
                         <ImageView fitHeight="85.0" fitWidth="73.0" layoutX="139.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imgs/signo-de-dolar.png" />
