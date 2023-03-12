@@ -27,7 +27,6 @@ public class Cuenta implements ICuenta{
     }
 
 
-    public void crearTransaccion(){}
 
 
     @Override
@@ -44,24 +43,10 @@ public class Cuenta implements ICuenta{
     }
 
     @Override
-    public Double retirarDinero() {
-        return null;
-    }
-
-    @Override
-    public void depositarDinero() {
-
-    }
-
-    @Override
-    public Double consultarSaldo() {
-        return null;
-    }
-
     public void consignar(Double saldoConsignar) {
         saldo += saldoConsignar;
     }
-
+    @Override
     public void retirar(Double saldoRetiro) {
         saldo -= saldoRetiro;
     }

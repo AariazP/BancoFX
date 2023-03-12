@@ -2,9 +2,7 @@ package org.example.model;
 
 public interface ICuenta {
 
-    Double retirarDinero();
-    void depositarDinero();
-    Double consultarSaldo();
 
-
+    void consignar(Double saldoConsignar);
+    void retirar(Double saldoRetiro);
 }

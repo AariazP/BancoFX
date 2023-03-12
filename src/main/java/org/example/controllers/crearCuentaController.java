@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.example.model.Cliente;
+import org.example.services.DBConnection;
 import org.example.utils.Utils;
 
 import java.net.URL;
@@ -78,9 +79,11 @@ public class crearCuentaController extends Controller implements Initializable {
         if (datosValidos()) {
             Cliente cliente = new Cliente(name, lastName, telefono, email, id, address, password, numCuenta, fecha, saldo, tipo);
             banco.crearCliente(cliente);
+            DBConnection.getInstance().agregarCliente(cliente);
             main.mostrarMensaje("Registro exitoso", "Registro exitoso", "Enhorabuena ya fue creada su cuenta",
                     Alert.AlertType.CONFIRMATION);
             main.loadStage(Utils.Login);
+
         }
     }
 
@@ -94,7 +97,7 @@ public class crearCuentaController extends Controller implements Initializable {
         password = txtContra.getText();
         numCuenta = txtNumCuenta.getText();
         telefono = txtTel.getText();
-        fecha = txtFecha.toString();
+        fecha = txtFecha.getValue().toString();
         tipo = boxCuenta.toString();
         try {
             saldo = Double.parseDouble(txtSaldo.getText());

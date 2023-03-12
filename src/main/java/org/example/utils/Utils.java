@@ -6,4 +6,5 @@ public class Utils {
     public static final String Crear = "/view/CrearcuentaView.fxml";
     public static final String Cliente = "/view/ClientView.fxml";
     public static final String Admin = "/view/AdminView.fxml";
+    public static final String CrearEmpleado = "/view/CrearEmpleadoView.fxml";
 }

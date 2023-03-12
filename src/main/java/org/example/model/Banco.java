@@ -3,10 +3,8 @@ package org.example.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.application.Main;
-
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.TreeSet;
 
 @Getter
@@ -39,30 +37,31 @@ public class Banco implements IBanco{
     }
 
 
+
     @Override
-    public Double consultarSaldo() {
-        return null;
+    public void crearEmpleado(Empleado empleado) {
+        listaEmpleados.add(empleado);
     }
 
     @Override
-    public void crearEmpleado() {
+    public void actualizarEmpleado(Empleado empleado) {
+
+        listaEmpleados.forEach(empleado1 -> {
+            if (empleado1.equals(empleado)) {
+                empleado1.setNombre(empleado.getNombre());
+                empleado1.setApellido(empleado.getApellido());
+                empleado1.setCorreo(empleado.getCorreo());
+                empleado1.setContrasenia(empleado.getContrasenia());
+            }
+        });
 
     }
 
     @Override
-    public void actualizarEmpleado() {
-
+    public void eliminarEmpleado(Empleado empleado) {
+        listaEmpleados.removeIf(empleado1 -> empleado1.equals(empleado));
     }
 
-    @Override
-    public void eliminarEmpleado() {
-
-    }
-
-    @Override
-    public void obtenerEmpleado() {
-
-    }
 
     @Override
     public void crearCliente(Cliente cliente) {
@@ -73,32 +72,29 @@ public class Banco implements IBanco{
 
 
     @Override
-    public void actualizarCliente() {
+    public void actualizarCliente(Cliente cliente) {
+
+        listaClientes.forEach(cliente1 -> {
+            if (cliente1.equals(cliente)) {
+                cliente1.setNombre(cliente.getNombre());
+                cliente1.setApellido(cliente.getApellido());
+                cliente1.setCorreo(cliente.getCorreo());
+                cliente1.setContrasenia(cliente.getContrasenia());
+                cliente1.setCuenta(cliente.getCuenta());
+            }
+        });
 
     }
 
     @Override
-    public void eliminarCliente() {
+    public void eliminarCliente(Cliente cliente) {
+        listaClientes.removeIf(cliente1 -> cliente1.equals(cliente));
 
     }
 
-    @Override
-    public void obtenerCliente() {
-
-    }
 
     @Override
-    public void realizarTransaccion() {
-
-    }
-
-    @Override
-    public double retirarDineroCuenta() {
-        return 0;
-    }
-
-    @Override
-    public void depositarDineroCuenta() {
+    public void realizarTransaccion(Transaccion transaccion) {
 
     }
 
@@ -107,16 +103,6 @@ public class Banco implements IBanco{
         main.loadStage(ruta);
     }
 
-    public Cliente loginCliente(String correo, String password){
-
-        for (Cliente cliente : listaClientes) {
-            if (cliente.isCliente(correo, password)) {
-                return cliente;
-            }
-        }
-
-        return null;
-    }
 
     public Persona getPersona(String email, String password) {
 

@@ -2,18 +2,15 @@ package org.example.model;
 
 public interface IBanco {
 
-    Double consultarSaldo();
-    void crearEmpleado();
-    void actualizarEmpleado();
-    void eliminarEmpleado();
-    void obtenerEmpleado();
+
+    void crearEmpleado(Empleado empleado);
+    void actualizarEmpleado(Empleado empleado);
+    void eliminarEmpleado(Empleado empleado);
+
     void crearCliente(Cliente cliente);
-    void actualizarCliente();
-    void eliminarCliente();
-    void obtenerCliente();
-    void realizarTransaccion();
-    double retirarDineroCuenta();
-    void depositarDineroCuenta();
+    void actualizarCliente(Cliente cliente);
+    void eliminarCliente(Cliente cliente);
+    void realizarTransaccion(Transaccion transaccion);
 
 
 }
