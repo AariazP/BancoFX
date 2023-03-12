@@ -6,6 +6,7 @@ import org.example.application.Main;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 @Getter
@@ -13,6 +14,8 @@ import java.util.TreeSet;
 public class Banco implements IBanco{
 
     Main main;
+
+    Cliente clienteActivo;
     private static Banco instance = null;
     private HashSet<Cliente> listaClientes;
     private TreeSet<Empleado> listaEmpleados;
@@ -73,6 +76,7 @@ public class Banco implements IBanco{
         Cuenta b;
         if(tipoCuenta == "Cuenta Ahorros"){
              b = new CuentaAhorro(numCuenta, saldo);
+             b.setEsA(true);
         }else{
 
             b = new CuentaCorriente(numCuenta, saldo);
@@ -112,9 +116,22 @@ public class Banco implements IBanco{
 
     }
 
-
     public void mostrarVentana(String ruta) throws Exception {
 
         main.loadStage(ruta);
+    }
+
+    public Cliente loguearCliente(String correo, String contra){
+
+        Iterator<Cliente> it = listaClientes.iterator();
+
+        while(it.hasNext()){
+            Cliente c = it.next();
+            if(c.getCorreo().equals(correo)){
+                if(c.getContrasenia().equals(contra))return c;
+            }
+        }
+
+        return null;
     }
 }
