@@ -16,8 +16,21 @@ public class Cliente extends Persona implements Comparable<Cliente>{
 
     public Cliente() {}
 
-    public Cliente(String nombre, String apellido, String cedula, String direccion, String telefono, String correo, String fechaNacimiento, String contrasenia) {
-        super(nombre, apellido, cedula, direccion, telefono, correo, fechaNacimiento, contrasenia);
+
+    public Cliente(String name, String lastName, String telefono, String email, String id, String address, String password, String numCuenta, String fecha, Double saldo, String tipo) {
+
+        super(name, lastName, id, address, telefono, email, fecha, password);
+        crearCuenta(numCuenta, saldo, tipo);
+
+
+
+    }
+
+    private void crearCuenta(String numCuenta, Double saldo, String tipo) {
+
+        if(tipo.equals("Cuenta Ahorros")) cuenta = new CuentaAhorro(numCuenta, saldo);
+        else cuenta = new CuentaCorriente(numCuenta, saldo);
+
     }
 
     @Override
@@ -35,4 +48,8 @@ public class Cliente extends Persona implements Comparable<Cliente>{
 
     @Override
     public int compareTo(Cliente o) {return this.getCedula().compareTo(o.getCedula());}
+
+    public boolean isCliente(String correo, String password) {
+        return this.getCorreo().equals(correo) && this.getContrasenia().equals(password);
+    }
 }

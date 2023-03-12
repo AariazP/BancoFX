@@ -13,7 +13,7 @@ public class Cuenta implements ICuenta{
     private Double saldo;
     private Banco banco;
 
-    private boolean esA;
+
 
     private LinkedList<Transaccion> listaTransacciones;
 
@@ -24,24 +24,8 @@ public class Cuenta implements ICuenta{
         listaTransacciones = new LinkedList<>();
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
-        esA = false;
     }
 
-    public String getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
-    }
-
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
 
     public void crearTransaccion(){}
 
@@ -52,22 +36,6 @@ public class Cuenta implements ICuenta{
         if (o == null || getClass() != o.getClass()) return false;
         Cuenta cuenta = (Cuenta) o;
         return Objects.equals(numeroCuenta, cuenta.numeroCuenta) && Objects.equals(saldo, cuenta.saldo) && Objects.equals(banco, cuenta.banco);
-    }
-
-    public Banco getBanco() {
-        return banco;
-    }
-
-    public void setBanco(Banco banco) {
-        this.banco = banco;
-    }
-
-    public LinkedList<Transaccion> getListaTransacciones() {
-        return listaTransacciones;
-    }
-
-    public void setListaTransacciones(LinkedList<Transaccion> listaTransacciones) {
-        this.listaTransacciones = listaTransacciones;
     }
 
     @Override

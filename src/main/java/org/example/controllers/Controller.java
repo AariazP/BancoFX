@@ -1,7 +1,6 @@
 package org.example.controllers;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.*;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.example.application.Main;

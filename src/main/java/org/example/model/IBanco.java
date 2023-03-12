@@ -7,7 +7,7 @@ public interface IBanco {
     void actualizarEmpleado();
     void eliminarEmpleado();
     void obtenerEmpleado();
-    void crearCliente();
+    void crearCliente(Cliente cliente);
     void actualizarCliente();
     void eliminarCliente();
     void obtenerCliente();

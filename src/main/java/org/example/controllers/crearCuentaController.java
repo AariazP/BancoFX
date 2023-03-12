@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import org.example.model.Cliente;
 import org.example.utils.Utils;
 
 import java.net.URL;
@@ -25,9 +26,6 @@ public class crearCuentaController extends Controller implements Initializable {
 
     @FXML
     private TextField txtApellido;
-
-    @FXML
-    private Button btnCrear;
 
     @FXML
     private PasswordField txtContra;
@@ -53,107 +51,76 @@ public class crearCuentaController extends Controller implements Initializable {
     @FXML
     private TextField txtNumCuenta;
 
-    @FXML
-    void devolverLogin(MouseEvent event) throws Exception {
 
-        banco.mostrarVentana(Utils.Login);
+    private String name;
+    private String lastName;
+    private String email;
+    private String id;
+    private String address;
+    private String password;
+    private String numCuenta;
+    private String telefono;
+    private String fecha;
+    private String tipo;
+    private Double saldo;
+
+
+    @FXML
+    void devolverLogin(MouseEvent ignoredEvent) throws Exception {
+        main.loadStage(Utils.Login);
     }
 
     @FXML
-    void crearCuenta(ActionEvent event) throws Exception {
+    void crearCuenta(ActionEvent ignoredEvent) throws Exception {
 
-        String nomb = txtNomb.getText();
-        String apd = txtApellido.getText();
-        String email = txtEmail.getText();
-        String id = txtId.getText();
-        String direc = txtDirec.getText();
-        String contra = txtContra.getText();
-        String numC = txtNumCuenta.getText();
-        String tel = txtTel.getText();
-        String fecha = txtFecha.toString();
-        String tipo = boxCuenta.toString();
-        Double saldo;
-        try{
+        loadTextFields();
 
+        if (datosValidos()) {
+            Cliente cliente = new Cliente(name, lastName, telefono, email, id, address, password, numCuenta, fecha, saldo, tipo);
+            banco.crearCliente(cliente);
+            main.mostrarMensaje("Registro exitoso", "Registro exitoso", "Enhorabuena ya fue creada su cuenta",
+                    Alert.AlertType.CONFIRMATION);
+            main.loadStage(Utils.Login);
+        }
+    }
+
+    private void loadTextFields() {
+
+        name = txtNomb.getText();
+        lastName = txtApellido.getText();
+        email = txtEmail.getText();
+        id = txtId.getText();
+        address = txtDirec.getText();
+        password = txtContra.getText();
+        numCuenta = txtNumCuenta.getText();
+        telefono = txtTel.getText();
+        fecha = txtFecha.toString();
+        tipo = boxCuenta.toString();
+        try {
             saldo = Double.parseDouble(txtSaldo.getText());
-        }catch (NumberFormatException e){
-
+        } catch (NumberFormatException e) {
             saldo = -1.0;
         }
-
-        if(datosValidos(nomb, apd, tel, email, id, direc, contra, numC, fecha, saldo, tipo)){
-
-            banco.crearhCliente(nomb, id, apd, direc, tel, email, fecha, contra, saldo, tipo, numC);
-            mostrarMensaje("Registro exitoso", "Registro exitos", "Enhorabuena ya fue creada su cuenta",
-                    Alert.AlertType.CONFIRMATION);
-            banco.mostrarVentana(Utils.Login);
-        }
     }
 
-    private boolean datosValidos(String nomb, String apd, String tel, String email, String id, String direc, String contra, String numC, String fecha, Double saldo, String tipo) {
+    private boolean datosValidos() {
 
-        String notificacionS = "";
+        String notificacion = "";
 
-        if (nomb == null || nomb.equals("")) {
+        if (name == null || name.equals("")) notificacion += "Debe ingresar un nombre.\n";
+        if (lastName == null || lastName.equals("")) notificacion += "Debe ingresar un apellido.\n";
+        if (telefono == null || telefono.equals("")) notificacion += "Debe ingresar un nombre.\n";
+        if (email == null || email.equals("")) notificacion += "Debe ingresar un email.\n";
+        if (id == null || id.equals("")) notificacion += "Debe ingresar un id.\n";
+        if (address == null || address.equals("")) notificacion += "Debe ingresar una dirección.\n";
+        if (password == null || password.equals("")) notificacion += "Debe ingresar una contraseña.\n";
+        if (numCuenta == null || numCuenta.equals("")) notificacion += "Debe ingresar un numero de cuenta.\n";
+        if (fecha == null || fecha.equals("")) notificacion += "Debe ingresar una fecha de nacimiento.\n";
+        if (saldo < 0) notificacion += "Debe ingresar un saldo valido.\n";
+        if (tipo == null || tipo.equals("")) notificacion += "Debe ingresar un tipo de cuenta.\n";
+        if (notificacion.equals("")) return true;
 
-            notificacionS += "Debe ingresar un nombre.\n";
-        }
-
-        if (apd == null || apd.equals("")) {
-
-            notificacionS += "Debe ingresar un apellido.\n";
-        }
-
-        if (tel == null || tel.equals("")) {
-
-            notificacionS += "Debe ingresar un nombre.\n";
-        }
-
-        if (email == null || email.equals("")) {
-
-            notificacionS += "Debe ingresar un email.\n";
-        }
-
-        if (id == null || id.equals("")) {
-
-            notificacionS += "Debe ingresar un id.\n";
-        }
-
-        if (direc == null || direc.equals("")) {
-
-            notificacionS += "Debe ingresar una dirección.\n";
-        }
-
-        if (contra == null || contra.equals("")) {
-
-            notificacionS += "Debe ingresar una contraseña.\n";
-        }
-
-        if (numC == null || numC.equals("")) {
-
-            notificacionS += "Debe ingresar un numero de cuenta.\n";
-        }
-
-        if (fecha == null || fecha.equals("")) {
-
-            notificacionS += "Debe ingresar una fecha de nacimiento.\n";
-        }
-
-        if (saldo < 0) {
-
-            notificacionS += "Debe ingresar un saldo valido.\n";
-        }
-
-        if (tipo == null || tipo.equals("")) {
-
-            notificacionS += "Debe ingresar un tipo de cuenta.\n";
-        }
-
-        if (notificacionS.equals("")) {
-            return true;
-        }
-
-        mostrarMensaje("Informacion de registro invalida", "Informacion de registro invalida", notificacionS,
+        main.mostrarMensaje("Informacion de registro invalida", "Informacion de registro invalida", notificacion,
                 Alert.AlertType.WARNING);
 
         return false;

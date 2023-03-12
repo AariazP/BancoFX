@@ -65,26 +65,12 @@ public class Banco implements IBanco{
     }
 
     @Override
-    public void crearCliente() {
-
+    public void crearCliente(Cliente cliente) {
+        listaClientes.add(cliente);
+        listaCuentas.put((cliente.getCedula()+""), cliente.getCuenta());
     }
 
-    public void crearhCliente(String nomb, String id, String apd, String direc, String telefono, String email,
-                             String fecha, String contra, double saldo, String tipoCuenta, String numCuenta) {
 
-        Cliente a = new Cliente(nomb, apd, id, direc, telefono, email, fecha, contra);
-        Cuenta b;
-        if(tipoCuenta == "Cuenta Ahorros"){
-             b = new CuentaAhorro(numCuenta, saldo);
-             b.setEsA(true);
-        }else{
-
-            b = new CuentaCorriente(numCuenta, saldo);
-        }
-        a.setCuenta(b);
-        listaClientes.add(a);
-        listaCuentas.put("", b);
-    }
 
     @Override
     public void actualizarCliente() {
@@ -121,17 +107,33 @@ public class Banco implements IBanco{
         main.loadStage(ruta);
     }
 
-    public Cliente loguearCliente(String correo, String contra){
+    public Cliente loginCliente(String correo, String password){
 
-        Iterator<Cliente> it = listaClientes.iterator();
-
-        while(it.hasNext()){
-            Cliente c = it.next();
-            if(c.getCorreo().equals(correo)){
-                if(c.getContrasenia().equals(contra))return c;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.isCliente(correo, password)) {
+                return cliente;
             }
         }
 
         return null;
+    }
+
+    public Persona getPersona(String email, String password) {
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente.isCliente(email, password)) {
+                return cliente;
+            }
+        }
+
+
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado.isEmpleado(email, password)) {
+                return empleado;
+            }
+        }
+
+        return null;
+
     }
 }

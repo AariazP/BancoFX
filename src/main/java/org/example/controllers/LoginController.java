@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.model.Cliente;
+import org.example.model.Persona;
 import org.example.utils.Utils;
 
 @Getter
@@ -27,30 +28,44 @@ public class LoginController extends Controller{
     @FXML
     private PasswordField txtPassword;
 
+    private String email;
+
+    private String password;
+
+
     @FXML
     void login(ActionEvent ignoredEvent) throws Exception {
 
-        String email = txtEmail.getText();
-        String password = txtPassword.getText();
+        cargarDatos();
 
-        if(datosValidos(email, password)){
+        if(datosValidos()){
 
-            Cliente cli = banco.loguearCliente(email, password);
-            if(cli != null){
+            Persona persona = banco.getPersona(email, password);
 
-                banco.setClienteActivo(cli);
-                banco.mostrarVentana(Utils.Cliente);
-            }else{
-
+            if(persona == null){
                 main.mostrarMensaje("Informacion de login invalida", "Informacion de login invalida", "El usuario que ingreso no esta registrado",
                         Alert.AlertType.WARNING);
                 txtEmail.setText("");
                 txtPassword.setText("");
+                return;
+            } else if (persona instanceof Cliente cliente) {
+                main.setPersonaActiva(cliente);
+                main.loadStage(Utils.Cliente);
+            } else {
+                main.setPersonaActiva(persona);
+                main.loadStage(Utils.Admin);
             }
+            
         }
+
     }
 
-    private boolean datosValidos(String email, String password){
+    private void cargarDatos() {
+        email = txtEmail.getText();
+        password = txtPassword.getText();
+    }
+
+    private boolean datosValidos(){
 
         if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
             main.mostrarMensaje("Informacion de login invalida", "Informacion de login invalida",

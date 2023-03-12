@@ -25,4 +25,8 @@ public class Empleado extends Persona implements Comparable<Empleado>{
     public int compareTo(Empleado o) {
         return o.getNombre().compareTo(this.getNombre());
     }
+
+    public boolean isEmpleado(String email, String password) {
+        return this.getCorreo().equals(email) && this.getContrasenia().equals(password);
+    }
 }
