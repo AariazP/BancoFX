@@ -24,8 +24,8 @@ public class Main extends Application{
         this.stage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.Login));
         Pane root = loader.load();
-        Controller controller = loader.getController();
-        controller.setMain(this);
+        /*Controller controller = loader.getController();
+        controller.setMain(this);*/
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
