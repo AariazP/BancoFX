@@ -2,14 +2,14 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.application.Main;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.TreeSet;
+import java.util.*;
 
 @Getter
 @Setter
-public class Banco implements IBanco{
+public class Banco implements IBanco {
+
 
     private static Banco instance = null;
     private HashSet<Cliente> listaClientes;
@@ -64,6 +64,8 @@ public class Banco implements IBanco{
 
     }
 
+
+
     @Override
     public void actualizarCliente() {
 
@@ -92,5 +94,17 @@ public class Banco implements IBanco{
     @Override
     public void depositarDineroCuenta() {
 
+    }
+
+
+    public Cliente loginCliente(String correo, String contrasenia) {
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente.isCliente(correo, contrasenia)) {
+                return cliente;
+            }
+        }
+
+        return null;
     }
 }

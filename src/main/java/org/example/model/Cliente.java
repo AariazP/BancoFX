@@ -11,7 +11,7 @@ public class Cliente extends Persona implements Comparable<Cliente>{
 
     private Empleado empleadoAsociado;
     private  Banco banco;
-
+    private String contrasena;
     private Cuenta cuenta;
 
     public Cliente() {
@@ -33,5 +33,10 @@ public class Cliente extends Persona implements Comparable<Cliente>{
     @Override
     public int compareTo(Cliente o) {
         return this.getNombre().compareTo(o.getNombre());
+    }
+
+
+    public boolean isCliente(String correo, String contrasenia) {
+        return this.getCorreo().equals(correo) && this.getContrasena().equals(contrasenia);
     }
 }
