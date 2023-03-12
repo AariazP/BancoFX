@@ -6,10 +6,15 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+
 public class CuentaAhorro extends Cuenta{
 
     public CuentaAhorro(String numeroCuenta, Double saldo) {
         super(numeroCuenta, saldo);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

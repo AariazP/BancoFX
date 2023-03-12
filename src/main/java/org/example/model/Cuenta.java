@@ -50,4 +50,16 @@ public class Cuenta implements ICuenta{
     public void retirar(Double saldoRetiro) {
         saldo -= saldoRetiro;
     }
+
+
+    @Override
+    public String toString() {
+
+        String tipoCuenta = "";
+
+        if(this instanceof CuentaAhorro) tipoCuenta = "CuentaAhorro";
+        else tipoCuenta = "CuentaCorriente";
+
+        return tipoCuenta + " " + numeroCuenta  + " " + saldo;
+    }
 }

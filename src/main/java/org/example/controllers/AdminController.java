@@ -126,16 +126,16 @@ public class AdminController extends Controller{
         observableEmpleados.addAll(banco.getListaEmpleados());
 
         tableColumCliApd.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-        tableColumCliEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        tableColumCliId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableColumCliEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        tableColumCliId.setCellValueFactory(new PropertyValueFactory<>("identificador"));
         tableColumCliNom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        tableColumCliSaldo.setCellValueFactory(new PropertyValueFactory<>("saldo"));
+        tableColumCliSaldo.setCellValueFactory(new PropertyValueFactory<>(""));
         tableClientes.setItems(observableClientes);
 
         tableEmpColumApd.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-        tableEmpColumCod.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        tableEmpColumEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        tableEmpColumId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableEmpColumCod.setCellValueFactory(new PropertyValueFactory<>("identificador"));
+        tableEmpColumEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        tableEmpColumId.setCellValueFactory(new PropertyValueFactory<>("identificador"));
         tableEmpColumNom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tableEmpColumSalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
         tableEmpleados.setItems(observableEmpleados);

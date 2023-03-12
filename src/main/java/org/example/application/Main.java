@@ -35,7 +35,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Banco.getInstance().crearCliente(new Cliente("Juan", "Perez", "", "", "", "", "", "", "", 3.5, ""));
+        Banco.getInstance();
         DBConnection.getInstance().cargarTodosDatos();
         System.out.println(Banco.getInstance().getListaClientes().size());
         System.out.println(Banco.getInstance().getListaEmpleados().size());

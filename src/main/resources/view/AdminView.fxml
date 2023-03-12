@@ -90,10 +90,9 @@
                         <TableView fx:id="tableClientes" layoutX="17.0" layoutY="33.0" prefHeight="373.0" prefWidth="536.0">
                            <columns>
                               <TableColumn fx:id="tableColumCliNom" prefWidth="75.0" text="Name" />
-                              <TableColumn fx:id="tableColumCliApd" prefWidth="75.0" text="Last name" />
-                              <TableColumn fx:id="tableColumCliId" prefWidth="75.0" text="Id" />
-                              <TableColumn fx:id="tableColumCliEmail" prefWidth="199.0" text="Email" />
-                              <TableColumn fx:id="tableColumCliSaldo" prefWidth="110.0" text="Money" />
+                              <TableColumn fx:id="tableColumCliApd" prefWidth="153.0" text="Last name" />
+                              <TableColumn fx:id="tableColumCliId" prefWidth="87.0" text="Id" />
+                              <TableColumn fx:id="tableColumCliEmail" prefWidth="220.0" text="Email" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>

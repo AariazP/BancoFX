@@ -1,8 +1,6 @@
 package org.example.services;
 
-import org.example.model.Banco;
-import org.example.model.Cliente;
-import org.example.model.Empleado;
+import org.example.model.*;
 
 import java.sql.*;
 
@@ -125,7 +123,8 @@ public class DBConnection {
                 cliente.setCorreo(rs.getString("correo"));
                 cliente.setContrasenia(rs.getString("contrasena"));
                 cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
-
+                Cuenta cuenta = obtenerTipoCuenta(rs.getString("cuenta"));
+                cliente.setCuenta(cuenta);
                 Banco.getInstance().crearCliente(cliente);
 
 
@@ -133,6 +132,21 @@ public class DBConnection {
         } catch (SQLException e) {
             System.out.println("Error al obtener los clientes de la base de datos: " + e.getMessage());
         }
+    }
+
+    private Cuenta obtenerTipoCuenta(String cuentaAux) {
+        Cuenta cuenta = null;
+
+        String[] datos = cuentaAux.split(" ");
+
+        if(datos[0].equals("CuentaAhorro")) {
+            cuenta = new CuentaAhorro(datos[2], Double.parseDouble(datos[1]));
+        }else{
+            cuenta = new CuentaCorriente( datos[1] , Double.parseDouble(datos[2]));
+        }
+
+        return cuenta;
+
     }
 
 
@@ -152,6 +166,7 @@ public class DBConnection {
                 empleado.setCorreo(rs.getString("correo"));
                 empleado.setContrasenia(rs.getString("contrasena"));
                 empleado.setFechaNacimiento(rs.getString("fechaNacimiento"));
+                empleado.setSalario(rs.getString("salario"));
                 Banco.getInstance().crearEmpleado(empleado);
             }
         } catch (SQLException e) {
