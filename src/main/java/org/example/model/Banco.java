@@ -2,6 +2,7 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.application.Main;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import java.util.TreeSet;
 @Setter
 public class Banco implements IBanco{
 
+    Main main;
     private static Banco instance = null;
     private HashSet<Cliente> listaClientes;
     private TreeSet<Empleado> listaEmpleados;
@@ -64,6 +66,22 @@ public class Banco implements IBanco{
 
     }
 
+    public void crearhCliente(String nomb, String id, String apd, String direc, String telefono, String email,
+                             String fecha, String contra, double saldo, String tipoCuenta, String numCuenta) {
+
+        Cliente a = new Cliente(nomb, apd, id, direc, telefono, email, fecha, contra);
+        Cuenta b;
+        if(tipoCuenta == "Cuenta Ahorros"){
+             b = new CuentaAhorro(numCuenta, saldo);
+        }else{
+
+            b = new CuentaCorriente(numCuenta, saldo);
+        }
+        a.setCuenta(b);
+        listaClientes.add(a);
+        listaCuentas.put("", b);
+    }
+
     @Override
     public void actualizarCliente() {
 
@@ -92,5 +110,11 @@ public class Banco implements IBanco{
     @Override
     public void depositarDineroCuenta() {
 
+    }
+
+
+    public void mostrarVentana(String ruta) throws Exception {
+
+        main.loadStage(ruta);
     }
 }

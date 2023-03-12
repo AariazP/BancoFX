@@ -92,7 +92,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtNum" layoutX="10.0" layoutY="98.0">
+                  <TextField fx:id="txtTel" layoutX="10.0" layoutY="98.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -108,22 +108,27 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="119.0" text="Date of birth" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="24.0" />
+                        <Insets top="22.0" />
                      </VBox.margin>
                   </Label>
                   <Label prefHeight="17.0" prefWidth="115.0" text="Bank Account" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="24.0" />
+                        <Insets top="22.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Account number" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="22.0" />
                      </VBox.margin>
                   </Label>
                   <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="119.0" text="Initial Balance" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="24.0" />
+                        <Insets top="22.0" />
                      </VBox.margin>
                   </Label>
                   <Label text="Password" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="24.0" />
+                        <Insets top="22.0" />
                      </VBox.margin>
                   </Label>
                </children>
@@ -133,16 +138,21 @@
             </VBox>
             <VBox layoutX="110.0" layoutY="10.0" prefHeight="155.0" prefWidth="187.0">
                <children>
-                  <DatePicker>
+                  <DatePicker fx:id="txtFecha">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <ComboBox prefHeight="26.0" prefWidth="187.0">
+                  <ComboBox fx:id="boxCuenta" prefHeight="26.0" prefWidth="187.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </ComboBox>
+                  <TextField fx:id="txtNumCuenta">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
                   <TextField fx:id="txtSaldo" layoutX="10.0" layoutY="46.0">
                      <VBox.margin>
                         <Insets top="15.0" />

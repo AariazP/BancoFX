@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="513.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.AdminView">
+<AnchorPane prefHeight="513.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AdminController">
    <children>
       <ImageView fitHeight="544.0" fitWidth="842.0" layoutX="-1.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,30 +29,30 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="33.0" prefHeight="373.0" prefWidth="546.0">
+                        <TableView fx:id="tableEmpleados" layoutX="14.0" layoutY="33.0" prefHeight="373.0" prefWidth="546.0">
                           <columns>
-                              <TableColumn prefWidth="75.0" text="Code" />
-                            <TableColumn prefWidth="75.0" text="Name" />
-                            <TableColumn prefWidth="75.0" text="Last name " />
-                              <TableColumn prefWidth="75.0" text="ID" />
-                              <TableColumn prefWidth="158.0" text="Email" />
-                              <TableColumn prefWidth="87.0" text="Salary" />
+                              <TableColumn fx:id="tableEmpColumCod" prefWidth="75.0" text="Code" />
+                            <TableColumn fx:id="tableEmpColumNom" prefWidth="75.0" text="Name" />
+                            <TableColumn fx:id="tableEmpColumApd" prefWidth="75.0" text="Last name " />
+                              <TableColumn fx:id="tableEmpColumId" prefWidth="75.0" text="ID" />
+                              <TableColumn fx:id="tableEmpColumEmail" prefWidth="158.0" text="Email" />
+                              <TableColumn fx:id="tableEmpColumSalario" prefWidth="87.0" text="Salary" />
                           </columns>
                         </TableView>
                         <VBox layoutX="588.0" layoutY="121.0" prefHeight="198.0" prefWidth="211.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Create" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Update">
+                              <Button fx:id="btnCrearEmp" mnemonicParsing="false" onAction="#crearEmp" prefHeight="33.0" prefWidth="221.0" text="Create" />
+                              <Button fx:id="btnActEmp" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#actualizarEmp" prefHeight="33.0" prefWidth="221.0" text="Update">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="10.0" layoutY="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Delete">
+                              <Button fx:id="btnElimEmp" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#eliminarEmp" prefHeight="33.0" prefWidth="221.0" text="Delete">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Associate a customer.">
+                              <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Associate a customer">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
@@ -69,31 +69,31 @@
                      <children>
                         <VBox layoutX="581.0" layoutY="111.0" prefHeight="198.0" prefWidth="211.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Crear" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Actualizar">
+                              <Button fx:id="btnCrearCli" mnemonicParsing="false" onAction="#crearCliente" prefHeight="33.0" prefWidth="221.0" text="Create" />
+                              <Button fx:id="btnActCli" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="33.0" prefWidth="221.0" text="Update">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="10.0" layoutY="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Eliminar">
+                              <Button fx:id="btnElimCli" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="33.0" prefWidth="221.0" text="Delete">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Asociar a un cliente">
+                              <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="221.0" text="Asociate an employee">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
                            </children>
                         </VBox>
-                        <TableView layoutX="17.0" layoutY="33.0" prefHeight="373.0" prefWidth="536.0">
+                        <TableView fx:id="tableClientes" layoutX="17.0" layoutY="33.0" prefHeight="373.0" prefWidth="536.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Name" />
-                              <TableColumn prefWidth="75.0" text="Last name" />
-                              <TableColumn prefWidth="75.0" text="Id" />
-                              <TableColumn prefWidth="199.0" text="Email" />
-                              <TableColumn prefWidth="110.0" text="Money" />
+                              <TableColumn fx:id="tableColumCliNom" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="tableColumCliApd" prefWidth="75.0" text="Last name" />
+                              <TableColumn fx:id="tableColumCliId" prefWidth="75.0" text="Id" />
+                              <TableColumn fx:id="tableColumCliEmail" prefWidth="199.0" text="Email" />
+                              <TableColumn fx:id="tableColumCliSaldo" prefWidth="110.0" text="Money" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
@@ -101,7 +101,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <Circle fill="#242424" layoutX="34.0" layoutY="26.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#242424" layoutX="34.0" layoutY="26.0" onMouseClicked="#salir" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Label layoutX="30.0" layoutY="18.0" text="&lt;" textFill="WHITE" />
    </children>
 </AnchorPane>

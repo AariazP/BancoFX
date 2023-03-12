@@ -22,9 +22,9 @@
       <Label layoutX="172.0" layoutY="208.0" text="Email" textFill="#ebebeb" />
       <Label layoutX="161.0" layoutY="277.0" text="Password" textFill="WHITE" />
       <TextField fx:id="txtEmail" layoutX="302.0" layoutY="204.0" prefHeight="26.0" prefWidth="335.0" />
-      <Button fx:id="btnIngresar" layoutX="383.0" layoutY="339.0" mnemonicParsing="false" onAction="#loguearse" text="Login" />
+      <Button fx:id="btnIngresar" layoutX="421.0" layoutY="342.0" mnemonicParsing="false" onAction="#loguearse" text="Login" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424248e" height="77.0" layoutX="7.0" layoutY="491.0" stroke="TRANSPARENT" strokeType="INSIDE" width="876.0" />
       <PasswordField fx:id="txtPaswd" layoutX="302.0" layoutY="271.0" prefHeight="25.0" prefWidth="335.0" />
-      <Button fx:id="btnOlvido" layoutX="271.0" layoutY="451.0" mnemonicParsing="false" onAction="#olvidarContra" style="-fx-background-color: none;" text="Would you like to create an account? Click here." textAlignment="CENTER" textFill="#7f66ff" underline="true" />
+      <Button fx:id="btnCrear" layoutX="285.0" layoutY="452.0" mnemonicParsing="false" onAction="#crearCuenta" style="-fx-background-color: none;" text="Would you like to create an account? Click here." textAlignment="CENTER" textFill="#7f66ff" underline="true" />
    </children>
 </AnchorPane>

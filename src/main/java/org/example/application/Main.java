@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.controllers.Controller;
+import org.example.model.Banco;
 import org.example.model.Persona;
 import org.example.utils.Utils;
 
@@ -15,6 +16,8 @@ public class Main extends Application{
     private Stage stage;
     private Persona personaActiva;
 
+    Banco banco = Banco.getInstance();
+
     public static void main(String[] args) {
         launch();
     }
@@ -22,10 +25,10 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.Crear));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.Login));
         Pane root = loader.load();
         //Controller controller = loader.getController();
-        //controller.setMain(this);
+        banco.setMain(this);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -34,8 +37,8 @@ public class Main extends Application{
     public void loadStage(String ruta) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
         Pane root = loader.load();
-        Controller controller = loader.getController();
-        controller.setMain(this);
+        //Controller controller = loader.getController();
+        banco.setMain(this);
         Scene scene = new Scene(root);
         stage.hide();
         stage.setScene(scene);

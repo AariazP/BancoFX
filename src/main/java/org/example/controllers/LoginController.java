@@ -5,14 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import lombok.Getter;
+import lombok.Setter;
+import org.example.utils.Utils;
 
+@Getter
+@Setter
 public class LoginController extends Controller{
 
     @FXML
     private Button btnIngresar;
 
     @FXML
-    private Button btnOlvido;
+    private Button btnCrear;
 
     @FXML
     private TextField txtEmail;
@@ -26,10 +31,9 @@ public class LoginController extends Controller{
     }
 
     @FXML
-    void olvidarContra(ActionEvent event) {
+    void crearCuenta(ActionEvent event) throws Exception {
 
-
-
+        banco.mostrarVentana(Utils.Crear);
     }
 
 }
