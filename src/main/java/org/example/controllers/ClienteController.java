@@ -12,7 +12,7 @@ import org.example.utils.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ClienteController extends Controller implements Initializable {
+public class ClienteController extends Controller {
 
     @FXML
     private Label labelNum;
@@ -49,19 +49,7 @@ public class ClienteController extends Controller implements Initializable {
     @FXML
     void salir(ActionEvent event) throws Exception {
 
-        banco.mostrarVentana(Utils.Login);
+        main.loadStage(Utils.Login);
     }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-        Cliente activo = banco.getClienteActivo();
-        labelSaldo.setText(activo.getCuenta().getSaldo() + "");
-        labelNum.setText(activo.getCuenta().getNumeroCuenta());
-        if(activo.getCuenta().isEsA()){
-            labelTipo.setText("Savings Account");
-        }else{
-
-            labelTipo.setText("Current Account");
-        }
-    }
 }

@@ -25,58 +25,44 @@ public class LoginController extends Controller{
     private TextField txtEmail;
 
     @FXML
-    private PasswordField txtPaswd;
+    private PasswordField txtPassword;
 
     @FXML
-    void loguearse(ActionEvent event) throws Exception {
+    void login(ActionEvent ignoredEvent) throws Exception {
 
         String email = txtEmail.getText();
-        String paswd = txtPaswd.getText();
+        String password = txtPassword.getText();
 
-        if(datosValidos(email, paswd)){
+        if(datosValidos(email, password)){
 
-            Cliente cli = banco.loguearCliente(email, paswd);
+            Cliente cli = banco.loguearCliente(email, password);
             if(cli != null){
 
                 banco.setClienteActivo(cli);
                 banco.mostrarVentana(Utils.Cliente);
             }else{
 
-                mostrarMensaje("Informacion de login invalida", "Informacion de login invalida", "El usuario que ingreso no esta registrado",
+                main.mostrarMensaje("Informacion de login invalida", "Informacion de login invalida", "El usuario que ingreso no esta registrado",
                         Alert.AlertType.WARNING);
                 txtEmail.setText("");
-                txtPaswd.setText("");
+                txtPassword.setText("");
             }
         }
     }
 
-    private boolean datosValidos(String email, String paswd) {
+    private boolean datosValidos(String email, String password){
 
-        String notificacionS = "";
-
-        if (email == null || email.equals("")) {
-
-            notificacionS += "Debe ingresar un correo.\n";
+        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            main.mostrarMensaje("Informacion de login invalida", "Informacion de login invalida",
+                    "Debe ingresar un correo y una contraseña.", Alert.AlertType.WARNING);
+            return false;
         }
 
-        if (paswd == null || paswd.equals("")) {
-
-            notificacionS += "Debe ingresar una contraseña.\n";
-        }
-        if (notificacionS.equals("")) {
-            return true;
-        }
-
-        mostrarMensaje("Informacion de login invalida", "Informacion de login invalida", notificacionS,
-                Alert.AlertType.WARNING);
-
-        return false;
+        return true;
     }
-
     @FXML
-    void crearCuenta(ActionEvent event) throws Exception {
-
-        banco.mostrarVentana(Utils.Crear);
+    void crearCuenta(ActionEvent ignoredEvent) throws Exception {
+        main.loadStage(Utils.Crear);
     }
 
 }

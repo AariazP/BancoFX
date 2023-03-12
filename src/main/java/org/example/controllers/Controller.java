@@ -14,14 +14,6 @@ public abstract class Controller {
     public Main main;
     Banco banco = Banco.getInstance();
 
-    public void mostrarMensaje(String titulo, String header, String mensaje, AlertType alerta) {
-
-        Alert alert = new Alert(alerta);
-        alert.setTitle(titulo);
-        alert.setHeaderText(header);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
 
 
 }
