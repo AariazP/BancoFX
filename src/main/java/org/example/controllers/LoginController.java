@@ -76,6 +76,8 @@ public class LoginController extends Controller{
     }
     @FXML
     void crearCuenta(ActionEvent ignoredEvent) throws Exception {
+
+        isLogin = true;
         main.loadStage(Utils.Crear);
     }
 

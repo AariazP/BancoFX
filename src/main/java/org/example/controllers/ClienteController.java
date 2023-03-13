@@ -3,9 +3,9 @@ package org.example.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import org.example.model.Cliente;
 import org.example.utils.Utils;
 
@@ -21,85 +21,65 @@ public class ClienteController extends Controller {
     private Label labelTipo;
 
     @FXML
-    private TextField txtSaldoConsignar;
+    private TextField txtSaldo;
 
-    @FXML
-    private TextField txtSaldoRetiro;
-    private Double saldoConsignar;
-    private Double saldoRetiro;
-
+    private Double saldo;
 
     @FXML
     void depositarDinero(ActionEvent ignoredEvent) {
 
-        if(cargarSaldoConsignar()){
+        if(verificarSaldo()){
             Cliente activo = (Cliente) main.getPersonaActiva();
-            activo.getCuenta().consignar(saldoConsignar);
+            activo.getCuenta().consignar(saldo);
             main.mostrarMensaje("Consignacion exitosa", "Consignacion exitosa", "Se ha consignado exitosamente el dinero a su cuenta",
                     Alert.AlertType.INFORMATION);
             cargarSaldo();
-            txtSaldoConsignar.setText("");
-            txtSaldoRetiro.setText("");
+            txtSaldo.setText("");
         }
-
-
-
     }
 
-    public boolean cargarSaldoConsignar(){
+    public boolean verificarSaldo(){
         try {
-            saldoConsignar = Double.parseDouble(txtSaldoConsignar.getText());
+            saldo = Double.parseDouble(txtSaldo.getText());
             return true;
         } catch (NumberFormatException e) {
             main.mostrarMensaje("Error", "Error", "El valor ingresado no es valido", Alert.AlertType.ERROR);
             return false;
         }
-
-
-
     }
 
 
     @FXML
     void retirarDinero(ActionEvent ignoredEvent) {
 
-        if(cargarSaldoRetiro()){
+        if(verificarSaldo()){
             Cliente activo = (Cliente) main.getPersonaActiva();
-            if(activo.getCuenta().getSaldo() >= saldoRetiro){
-                activo.getCuenta().retirar(saldoRetiro);
+            if(activo.getCuenta().getSaldo() >= saldo){
+                activo.getCuenta().retirar(saldo);
                 main.mostrarMensaje("Retiro exitoso", "Retiro exitoso", "Se ha retirado exitosamente el dinero de su cuenta",
                         Alert.AlertType.INFORMATION);
                 cargarSaldo();
             }else{
                 main.mostrarMensaje("Error", "Error", "No tiene saldo suficiente para realizar el retiro", Alert.AlertType.ERROR);
             }
-            txtSaldoRetiro.setText("");
-            txtSaldoConsignar.setText("");
-
+            txtSaldo.setText("");
         }
 
         cargarSaldo();
-
     }
-
-    private boolean cargarSaldoRetiro(){
-        try {
-            saldoRetiro = Double.parseDouble(txtSaldoRetiro.getText());
-            return true;
-        } catch (NumberFormatException e) {
-            main.mostrarMensaje("Error", "Error", "El valor ingresado no es valido", Alert.AlertType.ERROR);
-            return false;
-        }
-    }
-
-
 
     @FXML
     void salir(ActionEvent ignoredEvent) throws Exception {
+
         main.loadStage(Utils.Login);
     }
 
-
+    @FXML
+    void mostrarEmpleado(MouseEvent event) throws Exception {
+        Cliente activo = (Cliente) main.getPersonaActiva();
+        main.setPersonaPasiva(activo.getEmpleadoAsociado());
+        main.loadStage(Utils.Empleado);
+    }
 
     public void cargarSaldo() {
         Cliente activo = (Cliente) main.getPersonaActiva();

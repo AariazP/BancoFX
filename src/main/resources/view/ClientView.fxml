@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="418.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ClienteController">
+<AnchorPane prefHeight="418.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ClienteController">
    <children>
       <ImageView fitHeight="479.0" fitWidth="770.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,30 +22,6 @@
       <Label layoutX="310.0" layoutY="14.0" prefHeight="21.0" prefWidth="126.0" text="Manage your account." textFill="WHITE" />
       <TabPane layoutX="20.0" layoutY="73.0" prefHeight="391.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Add balance">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="115.0" layoutX="65.0" layoutY="98.0" stroke="TRANSPARENT" strokeType="INSIDE" width="581.0" />
-                        <Label layoutX="91.0" layoutY="138.0" text="Enter the total amount of money to add" textFill="#fffefe" />
-                        <TextField fx:id="txtSaldoConsignar" layoutX="337.0" layoutY="134.0" prefHeight="26.0" prefWidth="279.0" />
-                        <Button layoutX="337.0" layoutY="181.0" mnemonicParsing="false" onAction="#depositarDinero" text="Add" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Withdraw from account">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2424249a" height="115.0" layoutX="64.0" layoutY="102.0" stroke="TRANSPARENT" strokeType="INSIDE" width="581.0" />
-                        <Label layoutX="79.0" layoutY="137.0" text="Enter the total amount of money to withdraw" textFill="#fffefe" />
-                        <TextField fx:id="txtSaldoRetiro" layoutX="343.0" layoutY="133.0" prefHeight="26.0" prefWidth="279.0" />
-                        <Button layoutX="290.0" layoutY="181.0" mnemonicParsing="false" onAction="#retirarDinero" text="Withdraw money" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
             <Tab onSelectionChanged="#cargarSaldo" text="Account state">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -66,6 +42,9 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <TextField fx:id="txtSaldo" layoutX="214.0" layoutY="220.0" prefHeight="26.0" prefWidth="279.0" />
+                        <Button layoutX="455.0" layoutY="284.0" mnemonicParsing="false" onAction="#depositarDinero" text="Add" />
+                        <Button layoutX="214.0" layoutY="284.0" mnemonicParsing="false" onAction="#retirarDinero" text="Withdraw money" />
                         <Label fx:id="labelNum" layoutX="120.0" layoutY="29.0" textFill="#d4a3a3">
                            <font>
                               <Font size="16.0" />
@@ -76,6 +55,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="85.0" fitWidth="87.0" layoutX="600.0" layoutY="254.0" onMouseClicked="#mostrarEmpleado" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/empleado.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
               </content>

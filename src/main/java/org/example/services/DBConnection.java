@@ -30,10 +30,10 @@ public class DBConnection {
         return instance;
     }
 
+
     /**
      * Metodo que permite hacer una consulta a la base de datos.
      */
-
     public boolean iniciarSesion(String query) throws SQLException {
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -97,9 +97,9 @@ public class DBConnection {
             pstmt.executeUpdate();
             // Cierre de la conexión y del statement
             pstmt.close();
-            System.out.println(" Cliente agregado a la base de datos");
+            System.out.println(" Empleado agregado a la base de datos");
         } catch (SQLException e) {
-            System.out.println("Error al agregar el cliente a la base de datos: " + e.getMessage());
+            System.out.println("Error al agregar el empleado a la base de datos: " + e.getMessage());
         }
 
     }
@@ -166,14 +166,13 @@ public class DBConnection {
                 empleado.setCorreo(rs.getString("correo"));
                 empleado.setContrasenia(rs.getString("contrasena"));
                 empleado.setFechaNacimiento(rs.getString("fechaNacimiento"));
-                empleado.setSalario(rs.getString("salario"));
+                empleado.setSalario(rs.getDouble("salario"));
                 Banco.getInstance().crearEmpleado(empleado);
             }
         } catch (SQLException e) {
             System.out.println("Error al obtener los empleados de la base de datos: " + e.getMessage());
         }
     }
-
 
     public void cargarTodosDatos(){
         obtenerClientes();

@@ -25,6 +25,8 @@ public class Main extends Application{
     private Stage stage;
     private Persona personaActiva;
 
+    private Persona personaPasiva;
+
     Banco banco = Banco.getInstance();
 
     public static void main(String[] args) throws SQLException {

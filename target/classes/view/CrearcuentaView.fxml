@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -111,22 +112,22 @@
                         <Insets top="22.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="17.0" prefWidth="115.0" text="Bank Account" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets top="22.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Account number" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets top="22.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="119.0" text="Initial Balance" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets top="22.0" />
-                     </VBox.margin>
-                  </Label>
                   <Label text="Password" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="22.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelTipo" prefHeight="17.0" prefWidth="115.0" text="Bank Account" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="22.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelSal" layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="119.0" text="Initial Balance" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="22.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelNum" text="Account number" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="22.0" />
                      </VBox.margin>
@@ -143,30 +144,31 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <ComboBox fx:id="boxCuenta" prefHeight="26.0" prefWidth="187.0">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </ComboBox>
-                  <TextField fx:id="txtNumCuenta">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="txtSaldo" layoutX="10.0" layoutY="46.0">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </TextField>
                   <PasswordField fx:id="txtContra">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </PasswordField>
+                  <ComboBox fx:id="boxTipo" prefHeight="26.0" prefWidth="187.0">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <TextField fx:id="txtSaldo" layoutX="10.0" layoutY="46.0">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtNumCuenta">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
                </children>
             </VBox>
          </children>
       </HBox>
       <Button fx:id="btnCrear" layoutX="352.0" layoutY="452.0" mnemonicParsing="false" onAction="#crearCuenta" text="Create my account" />
+      <CheckBox fx:id="checkBoxEmp" layoutX="725.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#modificarVista" text="Is Employee?" textFill="WHITE" />
    </children>
 </AnchorPane>

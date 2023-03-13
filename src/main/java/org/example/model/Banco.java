@@ -96,12 +96,6 @@ public class Banco implements IBanco{
 
     }
 
-    public void mostrarVentana(String ruta) throws Exception {
-
-        main.loadStage(ruta);
-    }
-
-
     public Persona getPersona(String email, String password) {
 
         for (Cliente cliente : listaClientes) {
@@ -119,5 +113,26 @@ public class Banco implements IBanco{
 
         return null;
 
+    }
+
+    public void asociaciarEmpleado(Empleado empleado, Cliente cliente) {
+
+
+        for(Cliente cli : listaClientes){
+            if(cli.compareTo(cliente) == 0){
+
+                cli.setEmpleadoAsociado(empleado);
+            }
+        }
+    }
+
+    public void asociaciarCliente(Cliente cliente, Empleado empleado) {
+
+        for(Empleado emp : listaEmpleados){
+            if(emp.equals(empleado)){
+
+                emp.getListaClienteAsociados().add(cliente);
+            }
+        }
     }
 }

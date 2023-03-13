@@ -50,9 +50,6 @@ public class AdminController extends Controller{
     private TableColumn<Cliente, String> tableColumCliNom;
 
     @FXML
-    private TableColumn<Cliente, Double> tableColumCliSaldo;
-
-    @FXML
     private TableColumn<Empleado, String> tableEmpColumApd;
 
     @FXML
@@ -79,26 +76,45 @@ public class AdminController extends Controller{
 
 
     @FXML
-    void actualizarCliente(ActionEvent event) {
-        Cliente cliente = tableClientes.getSelectionModel().getSelectedItem();
-        banco.actualizarCliente(cliente);
-        main.mostrarMensaje("Exito", "Exito", "El cliente se actualizó correctamente", Alert.AlertType.INFORMATION);
+    void actualizarCliente(ActionEvent event) throws Exception {
 
+        Cliente cliente = tableClientes.getSelectionModel().getSelectedItem();
+        isLogin = false;
+        isUpdate = true;
+        isEmp = false;
+        main.setPersonaPasiva(cliente);
+        main.loadStage(Utils.Crear);
     }
 
     @FXML
-    void actualizarEmp(ActionEvent event) {
+    void actualizarEmp(ActionEvent event) throws Exception {
+
         Empleado empleado = tableEmpleados.getSelectionModel().getSelectedItem();
-        banco.actualizarEmpleado(empleado);
+        isLogin = false;
+        isUpdate = true;
+        isEmp = true;
+        main.setPersonaActiva(empleado);
+        main.loadStage(Utils.Crear);
+
     }
 
     @FXML
     void crearCliente(ActionEvent ignoredEvent) throws Exception {
+
+        isUpdate = false;
+        isLogin = false;
         main.loadStage(Utils.Crear);
+        llenarTablas();
+
     }
     @FXML
     void crearEmp(ActionEvent event) throws Exception {
-        main.loadStage(Utils.CrearEmpleado);
+
+        isUpdate = false;
+        main.mostrarMensaje("Information", "Information", "Make sure that the checkbox is selected", Alert.AlertType.INFORMATION);
+        isLogin = false;
+        main.loadStage(Utils.Crear);
+        llenarTablas();
     }
 
     @FXML
@@ -106,22 +122,29 @@ public class AdminController extends Controller{
 
         Cliente cliente = tableClientes.getSelectionModel().getSelectedItem();
         banco.eliminarCliente(cliente);
-
+        llenarTablas();
     }
 
     @FXML
     void eliminarEmp(ActionEvent event) {
+
         Empleado empleado = tableEmpleados.getSelectionModel().getSelectedItem();
         banco.eliminarEmpleado(empleado);
+        llenarTablas();
+    }
+    @FXML
+    void asociarCli(ActionEvent event) throws Exception {
+
+        Empleado empleado = tableEmpleados.getSelectionModel().getSelectedItem();
+        main.setPersonaPasiva(empleado);
+        main.loadStage(Utils.AClientes);
     }
 
-    @FXML
-    void salir(MouseEvent event) throws Exception {
-        main.loadStage(Utils.Login);
-    }
+    public void llenarTablas(){
 
-    @FXML
-    void initialize(){
+        tableEmpleados.getItems().clear();
+        tableClientes.getItems().clear();
+
         observableClientes.addAll(banco.getListaClientes());
         observableEmpleados.addAll(banco.getListaEmpleados());
 
@@ -129,7 +152,6 @@ public class AdminController extends Controller{
         tableColumCliEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
         tableColumCliId.setCellValueFactory(new PropertyValueFactory<>("identificador"));
         tableColumCliNom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        tableColumCliSaldo.setCellValueFactory(new PropertyValueFactory<>(""));
         tableClientes.setItems(observableClientes);
 
         tableEmpColumApd.setCellValueFactory(new PropertyValueFactory<>("apellido"));
@@ -142,6 +164,37 @@ public class AdminController extends Controller{
 
         tableClientes.refresh();
         tableEmpleados.refresh();
+    }
+    @FXML
+    void asociarEmp(ActionEvent event) throws Exception {
 
+        Cliente cliente = tableClientes.getSelectionModel().getSelectedItem();
+        main.setPersonaPasiva(cliente);
+        main.loadStage(Utils.AEmpleados);
+    }
+    @FXML
+    void salir(MouseEvent event) throws Exception {
+
+        main.loadStage(Utils.Login);
+    }
+
+    @FXML
+    void initialize(){
+        observableClientes.addAll(banco.getListaClientes());
+        observableEmpleados.addAll(banco.getListaEmpleados());
+
+        tableColumCliApd.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        tableColumCliEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        tableColumCliId.setCellValueFactory(new PropertyValueFactory<>("identificador"));
+        tableColumCliNom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        tableClientes.setItems(observableClientes);
+
+        tableEmpColumApd.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        tableEmpColumCod.setCellValueFactory(new PropertyValueFactory<>("identificador"));
+        tableEmpColumEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        tableEmpColumId.setCellValueFactory(new PropertyValueFactory<>("identificador"));
+        tableEmpColumNom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        tableEmpColumSalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
+        tableEmpleados.setItems(observableEmpleados);
     }
 }
